@@ -1,6 +1,6 @@
 # Fv Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/fv.svg)](https://pypi.org/project/fv/)
+[![PyPI version](https://img.shields.io/pypi/v/futverse.svg)](https://pypi.org/project/futverse/)
 
 The Fv Python library provides convenient access to the Fv REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -15,12 +15,9 @@ The full API of this library can be found in [api.md](api.md).
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/victorgabrieldeon/fv-api.git
+# install from PyPI
+pip install --pre futverse
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://app.stainless.com/docs/guides/publish), this will become: `pip install --pre fv`
 
 ## Usage
 
