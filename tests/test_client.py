@@ -24,7 +24,6 @@ from pydantic import ValidationError
 from fv import Fv, AsyncFv, APIResponseValidationError
 from fv._types import Omit
 from fv._models import BaseModel, FinalRequestOptions
-from fv._constants import RAW_RESPONSE_HEADER
 from fv._exceptions import FvError, APIStatusError, APITimeoutError, APIResponseValidationError
 from fv._base_client import (
     DEFAULT_TIMEOUT,
@@ -703,22 +702,21 @@ class TestFv:
 
     @mock.patch("fv._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: Fv) -> None:
         respx_mock.post("/profit").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            self.client.post("/profit", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}})
+            client.profit.with_streaming_response.calculate().__enter__()
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("fv._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: Fv) -> None:
         respx_mock.post("/profit").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            self.client.post("/profit", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}})
-
+            client.profit.with_streaming_response.calculate().__enter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -1504,26 +1502,21 @@ class TestAsyncFv:
 
     @mock.patch("fv._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncFv) -> None:
         respx_mock.post("/profit").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            await self.client.post(
-                "/profit", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
-            )
+            await async_client.profit.with_streaming_response.calculate().__aenter__()
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("fv._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, async_client: AsyncFv) -> None:
         respx_mock.post("/profit").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await self.client.post(
-                "/profit", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
-            )
-
+            await async_client.profit.with_streaming_response.calculate().__aenter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
