@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.1 (2025-08-10)
+
+Full Changelog: [v1.2.0...v1.2.1](https://github.com/victorgabrieldeon/fv-api/compare/v1.2.0...v1.2.1)
+
+### Chores
+
+* **internal:** update comment in script ([ce7cd5b](https://github.com/victorgabrieldeon/fv-api/commit/ce7cd5bca7bf0c8844882638653142a29926cc0d))
+* update @stainless-api/prism-cli to v5.15.0 ([cdcdb1d](https://github.com/victorgabrieldeon/fv-api/commit/cdcdb1d86804b372cc8e0861567d1fb39a8f52b4))
+
 ## 1.2.0 (2025-08-06)
 
 Full Changelog: [v1.1.0...v1.2.0](https://github.com/victorgabrieldeon/fv-api/compare/v1.1.0...v1.2.0)
