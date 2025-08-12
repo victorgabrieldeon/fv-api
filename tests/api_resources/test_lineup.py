@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestLineup:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_set_config(self, client: Fv) -> None:
         lineup = client.lineup.set_config(
@@ -25,7 +25,7 @@ class TestLineup:
         )
         assert_matches_type(LineupSetConfigResponse, lineup, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_set_config_with_all_params(self, client: Fv) -> None:
         lineup = client.lineup.set_config(
@@ -34,7 +34,7 @@ class TestLineup:
         )
         assert_matches_type(LineupSetConfigResponse, lineup, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_set_config(self, client: Fv) -> None:
         response = client.lineup.with_raw_response.set_config(
@@ -46,7 +46,7 @@ class TestLineup:
         lineup = response.parse()
         assert_matches_type(LineupSetConfigResponse, lineup, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_set_config(self, client: Fv) -> None:
         with client.lineup.with_streaming_response.set_config(
@@ -60,7 +60,7 @@ class TestLineup:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_set_config(self, client: Fv) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `formation_id` but received ''"):
@@ -74,7 +74,7 @@ class TestAsyncLineup:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_set_config(self, async_client: AsyncFv) -> None:
         lineup = await async_client.lineup.set_config(
@@ -82,7 +82,7 @@ class TestAsyncLineup:
         )
         assert_matches_type(LineupSetConfigResponse, lineup, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_set_config_with_all_params(self, async_client: AsyncFv) -> None:
         lineup = await async_client.lineup.set_config(
@@ -91,7 +91,7 @@ class TestAsyncLineup:
         )
         assert_matches_type(LineupSetConfigResponse, lineup, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_set_config(self, async_client: AsyncFv) -> None:
         response = await async_client.lineup.with_raw_response.set_config(
@@ -103,7 +103,7 @@ class TestAsyncLineup:
         lineup = await response.parse()
         assert_matches_type(LineupSetConfigResponse, lineup, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_set_config(self, async_client: AsyncFv) -> None:
         async with async_client.lineup.with_streaming_response.set_config(
@@ -117,7 +117,7 @@ class TestAsyncLineup:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_set_config(self, async_client: AsyncFv) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `formation_id` but received ''"):

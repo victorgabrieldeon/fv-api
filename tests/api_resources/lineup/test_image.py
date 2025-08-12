@@ -16,13 +16,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestImage:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get(self, client: Fv) -> None:
         image = client.lineup.image.get()
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_with_all_params(self, client: Fv) -> None:
         image = client.lineup.image.get(
@@ -30,7 +30,7 @@ class TestImage:
         )
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get(self, client: Fv) -> None:
         response = client.lineup.image.with_raw_response.get()
@@ -40,7 +40,7 @@ class TestImage:
         image = response.parse()
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get(self, client: Fv) -> None:
         with client.lineup.image.with_streaming_response.get() as response:
@@ -52,7 +52,7 @@ class TestImage:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_by_user_id(self, client: Fv) -> None:
         image = client.lineup.image.get_by_user_id(
@@ -60,7 +60,7 @@ class TestImage:
         )
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_by_user_id_with_all_params(self, client: Fv) -> None:
         image = client.lineup.image.get_by_user_id(
@@ -69,7 +69,7 @@ class TestImage:
         )
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_by_user_id(self, client: Fv) -> None:
         response = client.lineup.image.with_raw_response.get_by_user_id(
@@ -81,7 +81,7 @@ class TestImage:
         image = response.parse()
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_by_user_id(self, client: Fv) -> None:
         with client.lineup.image.with_streaming_response.get_by_user_id(
@@ -95,7 +95,7 @@ class TestImage:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_get_by_user_id(self, client: Fv) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):
@@ -109,13 +109,13 @@ class TestAsyncImage:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get(self, async_client: AsyncFv) -> None:
         image = await async_client.lineup.image.get()
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_with_all_params(self, async_client: AsyncFv) -> None:
         image = await async_client.lineup.image.get(
@@ -123,7 +123,7 @@ class TestAsyncImage:
         )
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get(self, async_client: AsyncFv) -> None:
         response = await async_client.lineup.image.with_raw_response.get()
@@ -133,7 +133,7 @@ class TestAsyncImage:
         image = await response.parse()
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get(self, async_client: AsyncFv) -> None:
         async with async_client.lineup.image.with_streaming_response.get() as response:
@@ -145,7 +145,7 @@ class TestAsyncImage:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_by_user_id(self, async_client: AsyncFv) -> None:
         image = await async_client.lineup.image.get_by_user_id(
@@ -153,7 +153,7 @@ class TestAsyncImage:
         )
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_by_user_id_with_all_params(self, async_client: AsyncFv) -> None:
         image = await async_client.lineup.image.get_by_user_id(
@@ -162,7 +162,7 @@ class TestAsyncImage:
         )
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_by_user_id(self, async_client: AsyncFv) -> None:
         response = await async_client.lineup.image.with_raw_response.get_by_user_id(
@@ -174,7 +174,7 @@ class TestAsyncImage:
         image = await response.parse()
         assert_matches_type(object, image, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_by_user_id(self, async_client: AsyncFv) -> None:
         async with async_client.lineup.image.with_streaming_response.get_by_user_id(
@@ -188,7 +188,7 @@ class TestAsyncImage:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_get_by_user_id(self, async_client: AsyncFv) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `user_id` but received ''"):

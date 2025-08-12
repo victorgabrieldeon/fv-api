@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestPack:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_buy(self, client: Fv) -> None:
         pack = client.me.pack.buy(
@@ -25,7 +25,7 @@ class TestPack:
         )
         assert_matches_type(PackBuyResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_buy_with_all_params(self, client: Fv) -> None:
         pack = client.me.pack.buy(
@@ -34,7 +34,7 @@ class TestPack:
         )
         assert_matches_type(PackBuyResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_buy(self, client: Fv) -> None:
         response = client.me.pack.with_raw_response.buy(
@@ -46,7 +46,7 @@ class TestPack:
         pack = response.parse()
         assert_matches_type(PackBuyResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_buy(self, client: Fv) -> None:
         with client.me.pack.with_streaming_response.buy(
@@ -60,7 +60,7 @@ class TestPack:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_buy(self, client: Fv) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pack_id` but received ''"):
@@ -68,7 +68,7 @@ class TestPack:
                 pack_id="",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_open(self, client: Fv) -> None:
         pack = client.me.pack.open(
@@ -76,7 +76,7 @@ class TestPack:
         )
         assert_matches_type(PackOpenResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_open_with_all_params(self, client: Fv) -> None:
         pack = client.me.pack.open(
@@ -85,7 +85,7 @@ class TestPack:
         )
         assert_matches_type(PackOpenResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_open(self, client: Fv) -> None:
         response = client.me.pack.with_raw_response.open(
@@ -97,7 +97,7 @@ class TestPack:
         pack = response.parse()
         assert_matches_type(PackOpenResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_open(self, client: Fv) -> None:
         with client.me.pack.with_streaming_response.open(
@@ -111,7 +111,7 @@ class TestPack:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_open(self, client: Fv) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pack_id` but received ''"):
@@ -125,7 +125,7 @@ class TestAsyncPack:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_buy(self, async_client: AsyncFv) -> None:
         pack = await async_client.me.pack.buy(
@@ -133,7 +133,7 @@ class TestAsyncPack:
         )
         assert_matches_type(PackBuyResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_buy_with_all_params(self, async_client: AsyncFv) -> None:
         pack = await async_client.me.pack.buy(
@@ -142,7 +142,7 @@ class TestAsyncPack:
         )
         assert_matches_type(PackBuyResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_buy(self, async_client: AsyncFv) -> None:
         response = await async_client.me.pack.with_raw_response.buy(
@@ -154,7 +154,7 @@ class TestAsyncPack:
         pack = await response.parse()
         assert_matches_type(PackBuyResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_buy(self, async_client: AsyncFv) -> None:
         async with async_client.me.pack.with_streaming_response.buy(
@@ -168,7 +168,7 @@ class TestAsyncPack:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_buy(self, async_client: AsyncFv) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pack_id` but received ''"):
@@ -176,7 +176,7 @@ class TestAsyncPack:
                 pack_id="",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_open(self, async_client: AsyncFv) -> None:
         pack = await async_client.me.pack.open(
@@ -184,7 +184,7 @@ class TestAsyncPack:
         )
         assert_matches_type(PackOpenResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_open_with_all_params(self, async_client: AsyncFv) -> None:
         pack = await async_client.me.pack.open(
@@ -193,7 +193,7 @@ class TestAsyncPack:
         )
         assert_matches_type(PackOpenResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_open(self, async_client: AsyncFv) -> None:
         response = await async_client.me.pack.with_raw_response.open(
@@ -205,7 +205,7 @@ class TestAsyncPack:
         pack = await response.parse()
         assert_matches_type(PackOpenResponse, pack, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_open(self, async_client: AsyncFv) -> None:
         async with async_client.me.pack.with_streaming_response.open(
@@ -219,7 +219,7 @@ class TestAsyncPack:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_open(self, async_client: AsyncFv) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `pack_id` but received ''"):

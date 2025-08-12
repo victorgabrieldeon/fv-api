@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestCard:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: Fv) -> None:
         card = client.me.card.update(
@@ -25,7 +25,7 @@ class TestCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Fv) -> None:
         card = client.me.card.update(
@@ -35,7 +35,7 @@ class TestCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Fv) -> None:
         response = client.me.card.with_raw_response.update(
@@ -47,7 +47,7 @@ class TestCard:
         card = response.parse()
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Fv) -> None:
         with client.me.card.with_streaming_response.update(
@@ -61,7 +61,7 @@ class TestCard:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_hire(self, client: Fv) -> None:
         card = client.me.card.hire(
@@ -69,7 +69,7 @@ class TestCard:
         )
         assert_matches_type(CardHireResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_hire_with_all_params(self, client: Fv) -> None:
         card = client.me.card.hire(
@@ -78,7 +78,7 @@ class TestCard:
         )
         assert_matches_type(CardHireResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_hire(self, client: Fv) -> None:
         response = client.me.card.with_raw_response.hire(
@@ -90,7 +90,7 @@ class TestCard:
         card = response.parse()
         assert_matches_type(CardHireResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_hire(self, client: Fv) -> None:
         with client.me.card.with_streaming_response.hire(
@@ -104,7 +104,7 @@ class TestCard:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_sell(self, client: Fv) -> None:
         card = client.me.card.sell(
@@ -112,7 +112,7 @@ class TestCard:
         )
         assert_matches_type(CardSellResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_sell_with_all_params(self, client: Fv) -> None:
         card = client.me.card.sell(
@@ -121,7 +121,7 @@ class TestCard:
         )
         assert_matches_type(CardSellResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_sell(self, client: Fv) -> None:
         response = client.me.card.with_raw_response.sell(
@@ -133,7 +133,7 @@ class TestCard:
         card = response.parse()
         assert_matches_type(CardSellResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_sell(self, client: Fv) -> None:
         with client.me.card.with_streaming_response.sell(
@@ -147,7 +147,7 @@ class TestCard:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_set_captain(self, client: Fv) -> None:
         card = client.me.card.set_captain(
@@ -155,7 +155,7 @@ class TestCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_set_captain_with_all_params(self, client: Fv) -> None:
         card = client.me.card.set_captain(
@@ -164,7 +164,7 @@ class TestCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_set_captain(self, client: Fv) -> None:
         response = client.me.card.with_raw_response.set_captain(
@@ -176,7 +176,7 @@ class TestCard:
         card = response.parse()
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_set_captain(self, client: Fv) -> None:
         with client.me.card.with_streaming_response.set_captain(
@@ -196,7 +196,7 @@ class TestAsyncCard:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncFv) -> None:
         card = await async_client.me.card.update(
@@ -204,7 +204,7 @@ class TestAsyncCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncFv) -> None:
         card = await async_client.me.card.update(
@@ -214,7 +214,7 @@ class TestAsyncCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncFv) -> None:
         response = await async_client.me.card.with_raw_response.update(
@@ -226,7 +226,7 @@ class TestAsyncCard:
         card = await response.parse()
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncFv) -> None:
         async with async_client.me.card.with_streaming_response.update(
@@ -240,7 +240,7 @@ class TestAsyncCard:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_hire(self, async_client: AsyncFv) -> None:
         card = await async_client.me.card.hire(
@@ -248,7 +248,7 @@ class TestAsyncCard:
         )
         assert_matches_type(CardHireResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_hire_with_all_params(self, async_client: AsyncFv) -> None:
         card = await async_client.me.card.hire(
@@ -257,7 +257,7 @@ class TestAsyncCard:
         )
         assert_matches_type(CardHireResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_hire(self, async_client: AsyncFv) -> None:
         response = await async_client.me.card.with_raw_response.hire(
@@ -269,7 +269,7 @@ class TestAsyncCard:
         card = await response.parse()
         assert_matches_type(CardHireResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_hire(self, async_client: AsyncFv) -> None:
         async with async_client.me.card.with_streaming_response.hire(
@@ -283,7 +283,7 @@ class TestAsyncCard:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_sell(self, async_client: AsyncFv) -> None:
         card = await async_client.me.card.sell(
@@ -291,7 +291,7 @@ class TestAsyncCard:
         )
         assert_matches_type(CardSellResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_sell_with_all_params(self, async_client: AsyncFv) -> None:
         card = await async_client.me.card.sell(
@@ -300,7 +300,7 @@ class TestAsyncCard:
         )
         assert_matches_type(CardSellResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_sell(self, async_client: AsyncFv) -> None:
         response = await async_client.me.card.with_raw_response.sell(
@@ -312,7 +312,7 @@ class TestAsyncCard:
         card = await response.parse()
         assert_matches_type(CardSellResponse, card, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_sell(self, async_client: AsyncFv) -> None:
         async with async_client.me.card.with_streaming_response.sell(
@@ -326,7 +326,7 @@ class TestAsyncCard:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_set_captain(self, async_client: AsyncFv) -> None:
         card = await async_client.me.card.set_captain(
@@ -334,7 +334,7 @@ class TestAsyncCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_set_captain_with_all_params(self, async_client: AsyncFv) -> None:
         card = await async_client.me.card.set_captain(
@@ -343,7 +343,7 @@ class TestAsyncCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_set_captain(self, async_client: AsyncFv) -> None:
         response = await async_client.me.card.with_raw_response.set_captain(
@@ -355,7 +355,7 @@ class TestAsyncCard:
         card = await response.parse()
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_set_captain(self, async_client: AsyncFv) -> None:
         async with async_client.me.card.with_streaming_response.set_captain(
