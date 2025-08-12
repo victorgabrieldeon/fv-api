@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestRedeem:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_redeem_code(self, client: Fv) -> None:
         redeem = client.redeem.redeem_code(
@@ -25,7 +25,7 @@ class TestRedeem:
         )
         assert_matches_type(RedeemRedeemCodeResponse, redeem, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_redeem_code_with_all_params(self, client: Fv) -> None:
         redeem = client.redeem.redeem_code(
@@ -34,7 +34,7 @@ class TestRedeem:
         )
         assert_matches_type(RedeemRedeemCodeResponse, redeem, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_redeem_code(self, client: Fv) -> None:
         response = client.redeem.with_raw_response.redeem_code(
@@ -46,7 +46,7 @@ class TestRedeem:
         redeem = response.parse()
         assert_matches_type(RedeemRedeemCodeResponse, redeem, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_redeem_code(self, client: Fv) -> None:
         with client.redeem.with_streaming_response.redeem_code(
@@ -66,7 +66,7 @@ class TestAsyncRedeem:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_redeem_code(self, async_client: AsyncFv) -> None:
         redeem = await async_client.redeem.redeem_code(
@@ -74,7 +74,7 @@ class TestAsyncRedeem:
         )
         assert_matches_type(RedeemRedeemCodeResponse, redeem, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_redeem_code_with_all_params(self, async_client: AsyncFv) -> None:
         redeem = await async_client.redeem.redeem_code(
@@ -83,7 +83,7 @@ class TestAsyncRedeem:
         )
         assert_matches_type(RedeemRedeemCodeResponse, redeem, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_redeem_code(self, async_client: AsyncFv) -> None:
         response = await async_client.redeem.with_raw_response.redeem_code(
@@ -95,7 +95,7 @@ class TestAsyncRedeem:
         redeem = await response.parse()
         assert_matches_type(RedeemRedeemCodeResponse, redeem, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_redeem_code(self, async_client: AsyncFv) -> None:
         async with async_client.redeem.with_streaming_response.redeem_code(
