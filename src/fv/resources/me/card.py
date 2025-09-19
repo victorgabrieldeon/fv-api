@@ -6,7 +6,7 @@ from typing import Iterable, Optional
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, strip_not_given, async_maybe_transform
 from ..._compat import cached_property
 from ...types.me import card_hire_params, card_sell_params, card_update_params
@@ -48,14 +48,14 @@ class CardResource(SyncAPIResource):
         self,
         usercard_id: int,
         *,
-        favorite: Optional[bool] | NotGiven = NOT_GIVEN,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        favorite: Optional[bool] | Omit = omit,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Atualiza um card de um usuário.
@@ -84,13 +84,13 @@ class CardResource(SyncAPIResource):
         self,
         *,
         card_id: str,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardHireResponse:
         """
         Contrata um card para um usuário.
@@ -118,13 +118,13 @@ class CardResource(SyncAPIResource):
         self,
         *,
         cards_ids: Iterable[int],
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardSellResponse:
         """
         Vende cards de um usuário.
@@ -152,13 +152,13 @@ class CardResource(SyncAPIResource):
         self,
         usercard_id: int,
         *,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Atualiza um card de um usuário.
@@ -207,14 +207,14 @@ class AsyncCardResource(AsyncAPIResource):
         self,
         usercard_id: int,
         *,
-        favorite: Optional[bool] | NotGiven = NOT_GIVEN,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        favorite: Optional[bool] | Omit = omit,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Atualiza um card de um usuário.
@@ -243,13 +243,13 @@ class AsyncCardResource(AsyncAPIResource):
         self,
         *,
         card_id: str,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardHireResponse:
         """
         Contrata um card para um usuário.
@@ -277,13 +277,13 @@ class AsyncCardResource(AsyncAPIResource):
         self,
         *,
         cards_ids: Iterable[int],
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CardSellResponse:
         """
         Vende cards de um usuário.
@@ -311,13 +311,13 @@ class AsyncCardResource(AsyncAPIResource):
         self,
         usercard_id: int,
         *,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Atualiza um card de um usuário.
