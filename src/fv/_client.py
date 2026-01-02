@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 from typing_extensions import Self, override
 
 import httpx
@@ -20,8 +20,8 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
-from .resources import auth, card, pack, match, profit, redeem, userinventory
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import FvError, APIStatusError
 from ._base_client import (
@@ -29,27 +29,24 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.me import me
-from .resources.user import user
-from .resources.lineup import lineup
+
+if TYPE_CHECKING:
+    from .resources import me, auth, card, pack, user, match, lineup, profit, redeem, userinventory
+    from .resources.auth import AuthResource, AsyncAuthResource
+    from .resources.card import CardResource, AsyncCardResource
+    from .resources.pack import PackResource, AsyncPackResource
+    from .resources.match import MatchResource, AsyncMatchResource
+    from .resources.me.me import MeResource, AsyncMeResource
+    from .resources.profit import ProfitResource, AsyncProfitResource
+    from .resources.redeem import RedeemResource, AsyncRedeemResource
+    from .resources.user.user import UserResource, AsyncUserResource
+    from .resources.lineup.lineup import LineupResource, AsyncLineupResource
+    from .resources.userinventory import UserinventoryResource, AsyncUserinventoryResource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Fv", "AsyncFv", "Client", "AsyncClient"]
 
 
 class Fv(SyncAPIClient):
-    profit: profit.ProfitResource
-    pack: pack.PackResource
-    me: me.MeResource
-    redeem: redeem.RedeemResource
-    lineup: lineup.LineupResource
-    user: user.UserResource
-    card: card.CardResource
-    match: match.MatchResource
-    userinventory: userinventory.UserinventoryResource
-    auth: auth.AuthResource
-    with_raw_response: FvWithRawResponse
-    with_streaming_response: FvWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -104,18 +101,73 @@ class Fv(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.profit = profit.ProfitResource(self)
-        self.pack = pack.PackResource(self)
-        self.me = me.MeResource(self)
-        self.redeem = redeem.RedeemResource(self)
-        self.lineup = lineup.LineupResource(self)
-        self.user = user.UserResource(self)
-        self.card = card.CardResource(self)
-        self.match = match.MatchResource(self)
-        self.userinventory = userinventory.UserinventoryResource(self)
-        self.auth = auth.AuthResource(self)
-        self.with_raw_response = FvWithRawResponse(self)
-        self.with_streaming_response = FvWithStreamedResponse(self)
+    @cached_property
+    def profit(self) -> ProfitResource:
+        from .resources.profit import ProfitResource
+
+        return ProfitResource(self)
+
+    @cached_property
+    def pack(self) -> PackResource:
+        from .resources.pack import PackResource
+
+        return PackResource(self)
+
+    @cached_property
+    def me(self) -> MeResource:
+        from .resources.me import MeResource
+
+        return MeResource(self)
+
+    @cached_property
+    def redeem(self) -> RedeemResource:
+        from .resources.redeem import RedeemResource
+
+        return RedeemResource(self)
+
+    @cached_property
+    def lineup(self) -> LineupResource:
+        from .resources.lineup import LineupResource
+
+        return LineupResource(self)
+
+    @cached_property
+    def user(self) -> UserResource:
+        from .resources.user import UserResource
+
+        return UserResource(self)
+
+    @cached_property
+    def card(self) -> CardResource:
+        from .resources.card import CardResource
+
+        return CardResource(self)
+
+    @cached_property
+    def match(self) -> MatchResource:
+        from .resources.match import MatchResource
+
+        return MatchResource(self)
+
+    @cached_property
+    def userinventory(self) -> UserinventoryResource:
+        from .resources.userinventory import UserinventoryResource
+
+        return UserinventoryResource(self)
+
+    @cached_property
+    def auth(self) -> AuthResource:
+        from .resources.auth import AuthResource
+
+        return AuthResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> FvWithRawResponse:
+        return FvWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> FvWithStreamedResponse:
+        return FvWithStreamedResponse(self)
 
     @property
     @override
@@ -223,19 +275,6 @@ class Fv(SyncAPIClient):
 
 
 class AsyncFv(AsyncAPIClient):
-    profit: profit.AsyncProfitResource
-    pack: pack.AsyncPackResource
-    me: me.AsyncMeResource
-    redeem: redeem.AsyncRedeemResource
-    lineup: lineup.AsyncLineupResource
-    user: user.AsyncUserResource
-    card: card.AsyncCardResource
-    match: match.AsyncMatchResource
-    userinventory: userinventory.AsyncUserinventoryResource
-    auth: auth.AsyncAuthResource
-    with_raw_response: AsyncFvWithRawResponse
-    with_streaming_response: AsyncFvWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -290,18 +329,73 @@ class AsyncFv(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.profit = profit.AsyncProfitResource(self)
-        self.pack = pack.AsyncPackResource(self)
-        self.me = me.AsyncMeResource(self)
-        self.redeem = redeem.AsyncRedeemResource(self)
-        self.lineup = lineup.AsyncLineupResource(self)
-        self.user = user.AsyncUserResource(self)
-        self.card = card.AsyncCardResource(self)
-        self.match = match.AsyncMatchResource(self)
-        self.userinventory = userinventory.AsyncUserinventoryResource(self)
-        self.auth = auth.AsyncAuthResource(self)
-        self.with_raw_response = AsyncFvWithRawResponse(self)
-        self.with_streaming_response = AsyncFvWithStreamedResponse(self)
+    @cached_property
+    def profit(self) -> AsyncProfitResource:
+        from .resources.profit import AsyncProfitResource
+
+        return AsyncProfitResource(self)
+
+    @cached_property
+    def pack(self) -> AsyncPackResource:
+        from .resources.pack import AsyncPackResource
+
+        return AsyncPackResource(self)
+
+    @cached_property
+    def me(self) -> AsyncMeResource:
+        from .resources.me import AsyncMeResource
+
+        return AsyncMeResource(self)
+
+    @cached_property
+    def redeem(self) -> AsyncRedeemResource:
+        from .resources.redeem import AsyncRedeemResource
+
+        return AsyncRedeemResource(self)
+
+    @cached_property
+    def lineup(self) -> AsyncLineupResource:
+        from .resources.lineup import AsyncLineupResource
+
+        return AsyncLineupResource(self)
+
+    @cached_property
+    def user(self) -> AsyncUserResource:
+        from .resources.user import AsyncUserResource
+
+        return AsyncUserResource(self)
+
+    @cached_property
+    def card(self) -> AsyncCardResource:
+        from .resources.card import AsyncCardResource
+
+        return AsyncCardResource(self)
+
+    @cached_property
+    def match(self) -> AsyncMatchResource:
+        from .resources.match import AsyncMatchResource
+
+        return AsyncMatchResource(self)
+
+    @cached_property
+    def userinventory(self) -> AsyncUserinventoryResource:
+        from .resources.userinventory import AsyncUserinventoryResource
+
+        return AsyncUserinventoryResource(self)
+
+    @cached_property
+    def auth(self) -> AsyncAuthResource:
+        from .resources.auth import AsyncAuthResource
+
+        return AsyncAuthResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncFvWithRawResponse:
+        return AsyncFvWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncFvWithStreamedResponse:
+        return AsyncFvWithStreamedResponse(self)
 
     @property
     @override
@@ -409,59 +503,271 @@ class AsyncFv(AsyncAPIClient):
 
 
 class FvWithRawResponse:
+    _client: Fv
+
     def __init__(self, client: Fv) -> None:
-        self.profit = profit.ProfitResourceWithRawResponse(client.profit)
-        self.pack = pack.PackResourceWithRawResponse(client.pack)
-        self.me = me.MeResourceWithRawResponse(client.me)
-        self.redeem = redeem.RedeemResourceWithRawResponse(client.redeem)
-        self.lineup = lineup.LineupResourceWithRawResponse(client.lineup)
-        self.user = user.UserResourceWithRawResponse(client.user)
-        self.card = card.CardResourceWithRawResponse(client.card)
-        self.match = match.MatchResourceWithRawResponse(client.match)
-        self.userinventory = userinventory.UserinventoryResourceWithRawResponse(client.userinventory)
-        self.auth = auth.AuthResourceWithRawResponse(client.auth)
+        self._client = client
+
+    @cached_property
+    def profit(self) -> profit.ProfitResourceWithRawResponse:
+        from .resources.profit import ProfitResourceWithRawResponse
+
+        return ProfitResourceWithRawResponse(self._client.profit)
+
+    @cached_property
+    def pack(self) -> pack.PackResourceWithRawResponse:
+        from .resources.pack import PackResourceWithRawResponse
+
+        return PackResourceWithRawResponse(self._client.pack)
+
+    @cached_property
+    def me(self) -> me.MeResourceWithRawResponse:
+        from .resources.me import MeResourceWithRawResponse
+
+        return MeResourceWithRawResponse(self._client.me)
+
+    @cached_property
+    def redeem(self) -> redeem.RedeemResourceWithRawResponse:
+        from .resources.redeem import RedeemResourceWithRawResponse
+
+        return RedeemResourceWithRawResponse(self._client.redeem)
+
+    @cached_property
+    def lineup(self) -> lineup.LineupResourceWithRawResponse:
+        from .resources.lineup import LineupResourceWithRawResponse
+
+        return LineupResourceWithRawResponse(self._client.lineup)
+
+    @cached_property
+    def user(self) -> user.UserResourceWithRawResponse:
+        from .resources.user import UserResourceWithRawResponse
+
+        return UserResourceWithRawResponse(self._client.user)
+
+    @cached_property
+    def card(self) -> card.CardResourceWithRawResponse:
+        from .resources.card import CardResourceWithRawResponse
+
+        return CardResourceWithRawResponse(self._client.card)
+
+    @cached_property
+    def match(self) -> match.MatchResourceWithRawResponse:
+        from .resources.match import MatchResourceWithRawResponse
+
+        return MatchResourceWithRawResponse(self._client.match)
+
+    @cached_property
+    def userinventory(self) -> userinventory.UserinventoryResourceWithRawResponse:
+        from .resources.userinventory import UserinventoryResourceWithRawResponse
+
+        return UserinventoryResourceWithRawResponse(self._client.userinventory)
+
+    @cached_property
+    def auth(self) -> auth.AuthResourceWithRawResponse:
+        from .resources.auth import AuthResourceWithRawResponse
+
+        return AuthResourceWithRawResponse(self._client.auth)
 
 
 class AsyncFvWithRawResponse:
+    _client: AsyncFv
+
     def __init__(self, client: AsyncFv) -> None:
-        self.profit = profit.AsyncProfitResourceWithRawResponse(client.profit)
-        self.pack = pack.AsyncPackResourceWithRawResponse(client.pack)
-        self.me = me.AsyncMeResourceWithRawResponse(client.me)
-        self.redeem = redeem.AsyncRedeemResourceWithRawResponse(client.redeem)
-        self.lineup = lineup.AsyncLineupResourceWithRawResponse(client.lineup)
-        self.user = user.AsyncUserResourceWithRawResponse(client.user)
-        self.card = card.AsyncCardResourceWithRawResponse(client.card)
-        self.match = match.AsyncMatchResourceWithRawResponse(client.match)
-        self.userinventory = userinventory.AsyncUserinventoryResourceWithRawResponse(client.userinventory)
-        self.auth = auth.AsyncAuthResourceWithRawResponse(client.auth)
+        self._client = client
+
+    @cached_property
+    def profit(self) -> profit.AsyncProfitResourceWithRawResponse:
+        from .resources.profit import AsyncProfitResourceWithRawResponse
+
+        return AsyncProfitResourceWithRawResponse(self._client.profit)
+
+    @cached_property
+    def pack(self) -> pack.AsyncPackResourceWithRawResponse:
+        from .resources.pack import AsyncPackResourceWithRawResponse
+
+        return AsyncPackResourceWithRawResponse(self._client.pack)
+
+    @cached_property
+    def me(self) -> me.AsyncMeResourceWithRawResponse:
+        from .resources.me import AsyncMeResourceWithRawResponse
+
+        return AsyncMeResourceWithRawResponse(self._client.me)
+
+    @cached_property
+    def redeem(self) -> redeem.AsyncRedeemResourceWithRawResponse:
+        from .resources.redeem import AsyncRedeemResourceWithRawResponse
+
+        return AsyncRedeemResourceWithRawResponse(self._client.redeem)
+
+    @cached_property
+    def lineup(self) -> lineup.AsyncLineupResourceWithRawResponse:
+        from .resources.lineup import AsyncLineupResourceWithRawResponse
+
+        return AsyncLineupResourceWithRawResponse(self._client.lineup)
+
+    @cached_property
+    def user(self) -> user.AsyncUserResourceWithRawResponse:
+        from .resources.user import AsyncUserResourceWithRawResponse
+
+        return AsyncUserResourceWithRawResponse(self._client.user)
+
+    @cached_property
+    def card(self) -> card.AsyncCardResourceWithRawResponse:
+        from .resources.card import AsyncCardResourceWithRawResponse
+
+        return AsyncCardResourceWithRawResponse(self._client.card)
+
+    @cached_property
+    def match(self) -> match.AsyncMatchResourceWithRawResponse:
+        from .resources.match import AsyncMatchResourceWithRawResponse
+
+        return AsyncMatchResourceWithRawResponse(self._client.match)
+
+    @cached_property
+    def userinventory(self) -> userinventory.AsyncUserinventoryResourceWithRawResponse:
+        from .resources.userinventory import AsyncUserinventoryResourceWithRawResponse
+
+        return AsyncUserinventoryResourceWithRawResponse(self._client.userinventory)
+
+    @cached_property
+    def auth(self) -> auth.AsyncAuthResourceWithRawResponse:
+        from .resources.auth import AsyncAuthResourceWithRawResponse
+
+        return AsyncAuthResourceWithRawResponse(self._client.auth)
 
 
 class FvWithStreamedResponse:
+    _client: Fv
+
     def __init__(self, client: Fv) -> None:
-        self.profit = profit.ProfitResourceWithStreamingResponse(client.profit)
-        self.pack = pack.PackResourceWithStreamingResponse(client.pack)
-        self.me = me.MeResourceWithStreamingResponse(client.me)
-        self.redeem = redeem.RedeemResourceWithStreamingResponse(client.redeem)
-        self.lineup = lineup.LineupResourceWithStreamingResponse(client.lineup)
-        self.user = user.UserResourceWithStreamingResponse(client.user)
-        self.card = card.CardResourceWithStreamingResponse(client.card)
-        self.match = match.MatchResourceWithStreamingResponse(client.match)
-        self.userinventory = userinventory.UserinventoryResourceWithStreamingResponse(client.userinventory)
-        self.auth = auth.AuthResourceWithStreamingResponse(client.auth)
+        self._client = client
+
+    @cached_property
+    def profit(self) -> profit.ProfitResourceWithStreamingResponse:
+        from .resources.profit import ProfitResourceWithStreamingResponse
+
+        return ProfitResourceWithStreamingResponse(self._client.profit)
+
+    @cached_property
+    def pack(self) -> pack.PackResourceWithStreamingResponse:
+        from .resources.pack import PackResourceWithStreamingResponse
+
+        return PackResourceWithStreamingResponse(self._client.pack)
+
+    @cached_property
+    def me(self) -> me.MeResourceWithStreamingResponse:
+        from .resources.me import MeResourceWithStreamingResponse
+
+        return MeResourceWithStreamingResponse(self._client.me)
+
+    @cached_property
+    def redeem(self) -> redeem.RedeemResourceWithStreamingResponse:
+        from .resources.redeem import RedeemResourceWithStreamingResponse
+
+        return RedeemResourceWithStreamingResponse(self._client.redeem)
+
+    @cached_property
+    def lineup(self) -> lineup.LineupResourceWithStreamingResponse:
+        from .resources.lineup import LineupResourceWithStreamingResponse
+
+        return LineupResourceWithStreamingResponse(self._client.lineup)
+
+    @cached_property
+    def user(self) -> user.UserResourceWithStreamingResponse:
+        from .resources.user import UserResourceWithStreamingResponse
+
+        return UserResourceWithStreamingResponse(self._client.user)
+
+    @cached_property
+    def card(self) -> card.CardResourceWithStreamingResponse:
+        from .resources.card import CardResourceWithStreamingResponse
+
+        return CardResourceWithStreamingResponse(self._client.card)
+
+    @cached_property
+    def match(self) -> match.MatchResourceWithStreamingResponse:
+        from .resources.match import MatchResourceWithStreamingResponse
+
+        return MatchResourceWithStreamingResponse(self._client.match)
+
+    @cached_property
+    def userinventory(self) -> userinventory.UserinventoryResourceWithStreamingResponse:
+        from .resources.userinventory import UserinventoryResourceWithStreamingResponse
+
+        return UserinventoryResourceWithStreamingResponse(self._client.userinventory)
+
+    @cached_property
+    def auth(self) -> auth.AuthResourceWithStreamingResponse:
+        from .resources.auth import AuthResourceWithStreamingResponse
+
+        return AuthResourceWithStreamingResponse(self._client.auth)
 
 
 class AsyncFvWithStreamedResponse:
+    _client: AsyncFv
+
     def __init__(self, client: AsyncFv) -> None:
-        self.profit = profit.AsyncProfitResourceWithStreamingResponse(client.profit)
-        self.pack = pack.AsyncPackResourceWithStreamingResponse(client.pack)
-        self.me = me.AsyncMeResourceWithStreamingResponse(client.me)
-        self.redeem = redeem.AsyncRedeemResourceWithStreamingResponse(client.redeem)
-        self.lineup = lineup.AsyncLineupResourceWithStreamingResponse(client.lineup)
-        self.user = user.AsyncUserResourceWithStreamingResponse(client.user)
-        self.card = card.AsyncCardResourceWithStreamingResponse(client.card)
-        self.match = match.AsyncMatchResourceWithStreamingResponse(client.match)
-        self.userinventory = userinventory.AsyncUserinventoryResourceWithStreamingResponse(client.userinventory)
-        self.auth = auth.AsyncAuthResourceWithStreamingResponse(client.auth)
+        self._client = client
+
+    @cached_property
+    def profit(self) -> profit.AsyncProfitResourceWithStreamingResponse:
+        from .resources.profit import AsyncProfitResourceWithStreamingResponse
+
+        return AsyncProfitResourceWithStreamingResponse(self._client.profit)
+
+    @cached_property
+    def pack(self) -> pack.AsyncPackResourceWithStreamingResponse:
+        from .resources.pack import AsyncPackResourceWithStreamingResponse
+
+        return AsyncPackResourceWithStreamingResponse(self._client.pack)
+
+    @cached_property
+    def me(self) -> me.AsyncMeResourceWithStreamingResponse:
+        from .resources.me import AsyncMeResourceWithStreamingResponse
+
+        return AsyncMeResourceWithStreamingResponse(self._client.me)
+
+    @cached_property
+    def redeem(self) -> redeem.AsyncRedeemResourceWithStreamingResponse:
+        from .resources.redeem import AsyncRedeemResourceWithStreamingResponse
+
+        return AsyncRedeemResourceWithStreamingResponse(self._client.redeem)
+
+    @cached_property
+    def lineup(self) -> lineup.AsyncLineupResourceWithStreamingResponse:
+        from .resources.lineup import AsyncLineupResourceWithStreamingResponse
+
+        return AsyncLineupResourceWithStreamingResponse(self._client.lineup)
+
+    @cached_property
+    def user(self) -> user.AsyncUserResourceWithStreamingResponse:
+        from .resources.user import AsyncUserResourceWithStreamingResponse
+
+        return AsyncUserResourceWithStreamingResponse(self._client.user)
+
+    @cached_property
+    def card(self) -> card.AsyncCardResourceWithStreamingResponse:
+        from .resources.card import AsyncCardResourceWithStreamingResponse
+
+        return AsyncCardResourceWithStreamingResponse(self._client.card)
+
+    @cached_property
+    def match(self) -> match.AsyncMatchResourceWithStreamingResponse:
+        from .resources.match import AsyncMatchResourceWithStreamingResponse
+
+        return AsyncMatchResourceWithStreamingResponse(self._client.match)
+
+    @cached_property
+    def userinventory(self) -> userinventory.AsyncUserinventoryResourceWithStreamingResponse:
+        from .resources.userinventory import AsyncUserinventoryResourceWithStreamingResponse
+
+        return AsyncUserinventoryResourceWithStreamingResponse(self._client.userinventory)
+
+    @cached_property
+    def auth(self) -> auth.AsyncAuthResourceWithStreamingResponse:
+        from .resources.auth import AsyncAuthResourceWithStreamingResponse
+
+        return AsyncAuthResourceWithStreamingResponse(self._client.auth)
 
 
 Client = Fv
