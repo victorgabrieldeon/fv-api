@@ -1,4 +1,4 @@
 configured_endpoints: 22
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/hypetech%2Ffv-5d3d516889d249304783174be7b6ac39f7758cbcec0540399b5c538e5f8c8211.yml
-openapi_spec_hash: aa94a0b23746548685904f0bdd426944
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/hypetech%2Ffv-30b1dca0564eb94003a31dc6be6530bfa62a3a40eef8c32b8400dac97609fc44.yml
+openapi_spec_hash: 69cce746594b4f563bc862fb1e552ad4
 config_hash: 2a66d7aa840511d926871b8148c60496
