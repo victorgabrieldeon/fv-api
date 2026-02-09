@@ -1,5 +1,39 @@
 # Changelog
 
+## 1.3.0 (2026-02-09)
+
+Full Changelog: [v1.2.1...v1.3.0](https://github.com/victorgabrieldeon/fv-api/compare/v1.2.1...v1.3.0)
+
+### Features
+
+* **api:** api update ([f6d1a3c](https://github.com/victorgabrieldeon/fv-api/commit/f6d1a3cc0cf9871843d831573bcf500a99fda1f5))
+* **api:** api update ([fc31773](https://github.com/victorgabrieldeon/fv-api/commit/fc3177365339e2a85d3f86f32361d57c71c8dec4))
+* **api:** api update ([478a5ea](https://github.com/victorgabrieldeon/fv-api/commit/478a5ea7f7f5497b9f21bcbd9d2576bab5a4456a))
+* **api:** api update ([0834a2c](https://github.com/victorgabrieldeon/fv-api/commit/0834a2c2adf36acbb6a4155bfb7db76b61b1bba4))
+* **api:** api update ([bc3d77b](https://github.com/victorgabrieldeon/fv-api/commit/bc3d77bc215c02cff545188553a492efb9d6adad))
+* **api:** api update ([e81ed84](https://github.com/victorgabrieldeon/fv-api/commit/e81ed841224bdfd727981ccd997501ef32c7c06a))
+* improve future compat with pydantic v3 ([a58b94d](https://github.com/victorgabrieldeon/fv-api/commit/a58b94dc5529528fc6954f3915f47f4844e6c907))
+* **types:** replace List[str] with SequenceNotStr in params ([e470e98](https://github.com/victorgabrieldeon/fv-api/commit/e470e989f188f72281be1bdfa3bfdb80858a87f7))
+
+
+### Bug Fixes
+
+* avoid newer type syntax ([92b76dc](https://github.com/victorgabrieldeon/fv-api/commit/92b76dc1bd6f5da097d0094a2b0a688fc45e883c))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([5be477a](https://github.com/victorgabrieldeon/fv-api/commit/5be477aa23ff3153152a25a22e69bb072d5faa4d))
+* **internal:** add Sequence related utils ([218c47b](https://github.com/victorgabrieldeon/fv-api/commit/218c47b6630a08a619c2b746932248aa670757fa))
+* **internal:** change ci workflow machines ([f29883f](https://github.com/victorgabrieldeon/fv-api/commit/f29883f0c5c67351ce5d460306628922f5be12b8))
+* **internal:** codegen related update ([e226f28](https://github.com/victorgabrieldeon/fv-api/commit/e226f288b26671c98700019593cebaab822a0238))
+* **internal:** move mypy configurations to `pyproject.toml` file ([61adf69](https://github.com/victorgabrieldeon/fv-api/commit/61adf6958482b7da1b8069d9b8df7a0b90f9f2c4))
+* **internal:** update pydantic dependency ([63f2a47](https://github.com/victorgabrieldeon/fv-api/commit/63f2a47b49db28b3bcf9ffceef0550135b288e52))
+* **internal:** update pyright exclude list ([20612b0](https://github.com/victorgabrieldeon/fv-api/commit/20612b0d435b6acdd9f879711a76d66aad2b51dc))
+* **tests:** simplify `get_platform` test ([c0f9cc4](https://github.com/victorgabrieldeon/fv-api/commit/c0f9cc45e2160204d83ef1f42a324b61bc3ba5bb))
+* **types:** change optional parameter type from NotGiven to Omit ([2cdb8cf](https://github.com/victorgabrieldeon/fv-api/commit/2cdb8cf42a5b8dd0daa552159c2ef7f8f8fee845))
+* update github action ([12629d5](https://github.com/victorgabrieldeon/fv-api/commit/12629d51397fd65f293669d9ab1b76007166b04c))
+
 ## 1.2.1 (2025-08-10)
 
 Full Changelog: [v1.2.0...v1.2.1](https://github.com/victorgabrieldeon/fv-api/compare/v1.2.0...v1.2.1)
