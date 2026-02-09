@@ -12,8 +12,6 @@ __all__ = ["PackListResponse", "PackListResponseItem"]
 class PackListResponseItem(BaseModel):
     created_at: datetime
 
-    emoji: str
-
     image: str
 
     name: str

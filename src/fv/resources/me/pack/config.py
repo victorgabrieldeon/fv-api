@@ -6,7 +6,7 @@ from typing import Optional
 
 import httpx
 
-from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ...._utils import maybe_transform, strip_not_given, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -46,13 +46,13 @@ class ConfigResource(SyncAPIResource):
     def retrieve(
         self,
         *,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConfigRetrieveResponse:
         """
         Retorna as configurações de packs do usuário.
@@ -78,15 +78,15 @@ class ConfigResource(SyncAPIResource):
     def update(
         self,
         *,
-        auto_sell_cards_repeated: Optional[bool] | NotGiven = NOT_GIVEN,
-        auto_sell_less_than: Optional[int] | NotGiven = NOT_GIVEN,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        auto_sell_cards_repeated: Optional[bool] | Omit = omit,
+        auto_sell_less_than: Optional[int] | Omit = omit,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Atualiza as configurações de packs do usuário.
@@ -141,13 +141,13 @@ class AsyncConfigResource(AsyncAPIResource):
     async def retrieve(
         self,
         *,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConfigRetrieveResponse:
         """
         Retorna as configurações de packs do usuário.
@@ -173,15 +173,15 @@ class AsyncConfigResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        auto_sell_cards_repeated: Optional[bool] | NotGiven = NOT_GIVEN,
-        auto_sell_less_than: Optional[int] | NotGiven = NOT_GIVEN,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        auto_sell_cards_repeated: Optional[bool] | Omit = omit,
+        auto_sell_less_than: Optional[int] | Omit = omit,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Atualiza as configurações de packs do usuário.

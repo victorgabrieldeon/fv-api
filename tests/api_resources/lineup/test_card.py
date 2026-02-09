@@ -15,7 +15,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestCard:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_down(self, client: Fv) -> None:
         card = client.lineup.card.down(
@@ -23,7 +23,7 @@ class TestCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_down_with_all_params(self, client: Fv) -> None:
         card = client.lineup.card.down(
@@ -32,7 +32,7 @@ class TestCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_down(self, client: Fv) -> None:
         response = client.lineup.card.with_raw_response.down(
@@ -44,7 +44,7 @@ class TestCard:
         card = response.parse()
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_down(self, client: Fv) -> None:
         with client.lineup.card.with_streaming_response.down(
@@ -58,7 +58,7 @@ class TestCard:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_up(self, client: Fv) -> None:
         card = client.lineup.card.up(
@@ -67,7 +67,7 @@ class TestCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_up_with_all_params(self, client: Fv) -> None:
         card = client.lineup.card.up(
@@ -77,7 +77,7 @@ class TestCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_up(self, client: Fv) -> None:
         response = client.lineup.card.with_raw_response.up(
@@ -90,7 +90,7 @@ class TestCard:
         card = response.parse()
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_up(self, client: Fv) -> None:
         with client.lineup.card.with_streaming_response.up(
@@ -111,7 +111,7 @@ class TestAsyncCard:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_down(self, async_client: AsyncFv) -> None:
         card = await async_client.lineup.card.down(
@@ -119,7 +119,7 @@ class TestAsyncCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_down_with_all_params(self, async_client: AsyncFv) -> None:
         card = await async_client.lineup.card.down(
@@ -128,7 +128,7 @@ class TestAsyncCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_down(self, async_client: AsyncFv) -> None:
         response = await async_client.lineup.card.with_raw_response.down(
@@ -140,7 +140,7 @@ class TestAsyncCard:
         card = await response.parse()
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_down(self, async_client: AsyncFv) -> None:
         async with async_client.lineup.card.with_streaming_response.down(
@@ -154,7 +154,7 @@ class TestAsyncCard:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_up(self, async_client: AsyncFv) -> None:
         card = await async_client.lineup.card.up(
@@ -163,7 +163,7 @@ class TestAsyncCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_up_with_all_params(self, async_client: AsyncFv) -> None:
         card = await async_client.lineup.card.up(
@@ -173,7 +173,7 @@ class TestAsyncCard:
         )
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_up(self, async_client: AsyncFv) -> None:
         response = await async_client.lineup.card.with_raw_response.up(
@@ -186,7 +186,7 @@ class TestAsyncCard:
         card = await response.parse()
         assert card is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_up(self, async_client: AsyncFv) -> None:
         async with async_client.lineup.card.with_streaming_response.up(

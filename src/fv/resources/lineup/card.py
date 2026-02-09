@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, strip_not_given, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -46,13 +46,13 @@ class CardResource(SyncAPIResource):
         self,
         usercard_id: int,
         *,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Retira um card do time titular.
@@ -81,13 +81,13 @@ class CardResource(SyncAPIResource):
         usercard_id: int,
         *,
         position: Literal["GOL", "LD", "LE", "ZAG", "VOL", "MA", "MC", "PD", "PE", "CA"],
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Escala um card do usuário para o time titular.
@@ -140,13 +140,13 @@ class AsyncCardResource(AsyncAPIResource):
         self,
         usercard_id: int,
         *,
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Retira um card do time titular.
@@ -175,13 +175,13 @@ class AsyncCardResource(AsyncAPIResource):
         usercard_id: int,
         *,
         position: Literal["GOL", "LD", "LE", "ZAG", "VOL", "MA", "MC", "PD", "PE", "CA"],
-        accept_language: str | NotGiven = NOT_GIVEN,
+        accept_language: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Escala um card do usuário para o time titular.
